@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
 import * as PIXI from 'pixi.js';
 
+import './DrawingCanvas.css';
+
 function DrawingCanvas() {
   const canvas = useRef(null);
 
@@ -101,7 +103,19 @@ function DrawingCanvas() {
   }, [])
 
   return (
-    <canvas ref={canvas} />
+    <div className="scene-1">
+      <canvas ref={canvas} />
+
+      <div className="dialog-1-container">
+        <h1>← Paint your digital organism</h1>
+        <p>Tip: draw slower</p>
+
+        <div className="dialog-1-bt">
+          <span>I'm Finished</span>
+        </div>
+      </div>
+    </div>
+
   );
 }
 
