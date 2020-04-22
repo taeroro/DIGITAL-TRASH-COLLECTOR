@@ -20,7 +20,7 @@ class App extends Component {
   // https://dev.to/christiankastner/integrating-p5-js-with-react-i0d
   // **********
   Sketch = (p) => {
-    let currentScene = -1;
+    let mgr;
 
     let grid = 20;
     let gridOffset = grid / 2;
@@ -33,75 +33,109 @@ class App extends Component {
     // ############
     p.setup = () => {
       p.createCanvas(this.state.width, this.state.height);
-      p.background(255);
 
-      // Draw grid
-      let l = 0;
-      p.strokeWeight(0.5);
-      p.stroke(150);
+      mgr = new SceneManager();
 
-      while (l < p.width || l < p.height) {
-        p.line(0, l, p.width, l);
-        p.line(l, 0, l, p.height);
-        l += grid;
-      }
+      mgr.addScene( Scene0 );
+      mgr.addScene( Scene1 );
 
-      let sceneBt = p.createButton('NEXT SCENE');
-      sceneBt.position(10, 10);
-      sceneBt.mousePressed(drawScene1);
+      mgr.showScene( Scene0 );
 
-      console.log("Scene #" + currentScene);
+      // let sceneBt = p.createButton('NEXT SCENE');
+      // sceneBt.position(10, 10);
+      // sceneBt.mousePressed(drawScene1);
     }
 
     // ############
     // draw
     // ############
     p.draw = () => {
-      drawScene0();
+      mgr.draw();
+    }
+
+    p.mousePressed = () => {
+      mgr.handleEvent("mousePressed");
+    }
+
+    p.keyPressed = () => {
+        // You can optionaly handle the key press at global level...
+        switch(p.key) {
+          case '1':
+            console.log('s1');
+            mgr.showScene( Scene0 );
+            break;
+          case '2':
+            console.log('s2');
+            mgr.showScene( Scene1 );
+            break;
+        }
+
+        // ... then dispatch via the SceneManager.
+        mgr.handleEvent("keyPressed");
     }
 
 
     // ############
     // Scene 0 - 8 bit drawing canvas
     // ############
-    let drawScene0 = function() {
-      currentScene = 0;
+    let Scene0 = function() {
+      this.enter = () => {
+        p.background(255);
 
-      p.strokeWeight(grid);
-      p.strokeCap(p.PROJECT);
-      p.stroke(0, 0, 0);
+        // Draw grid
+        let l = 0;
+        p.strokeWeight(0.5);
+        p.stroke(150);
 
-      if (p.mouseIsPressed) {
-        // console.log("start");
-        let x = snap(p.mouseX);
-        let y = snap(p.mouseY);
-        let px = snap(p.pmouseX);
-        let py = snap(p.pmouseY);
+        while (l < p.width || l < p.height) {
+          p.line(0, l, p.width, l);
+          p.line(l, 0, l, p.height);
+          l += grid;
+        }
 
-        saveCoord(x, y, currentPath);
+        console.log("setup 0");
+      }
 
-        if (x !== px || y !== py) {
-          p.line(px, py, px, py);
-          p.line(x, y, x, y);
+      this.draw = () => {
+        p.strokeWeight(grid);
+        p.strokeCap(p.PROJECT);
+        p.stroke(0, 0, 0);
+
+        if (p.mouseIsPressed) {
+          // console.log("start");
+          let x = snap(p.mouseX);
+          let y = snap(p.mouseY);
+          let px = snap(p.pmouseX);
+          let py = snap(p.pmouseY);
+
+          saveCoord(x, y, currentPath);
+
+          if (x !== px || y !== py) {
+            p.line(px, py, px, py);
+            p.line(x, y, x, y);
+          }
+          else {
+            p.line(px, py, x, y);
+          }
         }
         else {
-          p.line(px, py, x, y);
+          pathHistory.push(currentPath);
+          currentPath = [];
         }
-      }
-      else {
-        pathHistory.push(currentPath);
-        currentPath = [];
       }
     }
 
     // ############
     // Scene 1 -
     // ############
-    let drawScene1 = function() {
-      currentScene = 1;
+    let Scene1 = function() {
+      this.enter = () => {
+        p.background(200);
+      }
 
-      console.log("new");
-
+      this.draw = () => {
+        p.line(200, 0, 100, 300);
+      }
     }
 
 
