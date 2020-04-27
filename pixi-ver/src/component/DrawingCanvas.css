@@ -1,22 +1,22 @@
-.scene-1 {
+.scene-drwaing {
   width: 100vw;
   background-color: #050505; }
 
-.dialog-1-container {
+.dialog-drwaing-container {
   position: absolute;
   top: 0;
   width: calc(100% - 100vh - 10vw);
   height: calc(100% - 20vh);
   margin-left: 100vh;
   padding: 10vh 5vw; }
-  .dialog-1-container h1 {
+  .dialog-drwaing-container h1 {
     margin: 0;
     font-size: 48px;
     color: #fff; }
-  .dialog-1-container p {
+  .dialog-drwaing-container p {
     font-size: 28px;
     color: rgba(255, 255, 255, 0.3); }
-  .dialog-1-container .dialog-1-bt {
+  .dialog-drwaing-container .dialog-drwaing-bt {
     display: inline-block;
     position: absolute;
     padding: 15px 30px;
@@ -24,7 +24,7 @@
     right: 5vw;
     background-color: #E5E5E5;
     cursor: pointer; }
-    .dialog-1-container .dialog-1-bt span {
+    .dialog-drwaing-container .dialog-drwaing-bt span {
       font-size: 32px;
       color: #000; }
 

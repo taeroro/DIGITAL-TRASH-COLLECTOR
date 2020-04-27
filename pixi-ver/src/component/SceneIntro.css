@@ -1,0 +1,29 @@
+.scene-intro {
+  width: calc(100vw - 10vw);
+  height: calc(100vh - 20vh);
+  background-color: #050505;
+  padding: 10vh 5vw; }
+  .scene-intro h1 {
+    max-width: 50vw;
+    margin: 0;
+    font-size: 48px;
+    color: #fff; }
+
+.dialog-intro-bt-container {
+  position: absolute;
+  bottom: 10vh;
+  right: 5vw; }
+  .dialog-intro-bt-container .yes-bt, .dialog-intro-bt-container .no-bt {
+    display: block;
+    padding: 15px 0;
+    min-width: 180px;
+    background-color: #E5E5E5;
+    cursor: pointer;
+    text-align: center; }
+    .dialog-intro-bt-container .yes-bt span, .dialog-intro-bt-container .no-bt span {
+      font-size: 32px;
+      color: #000; }
+  .dialog-intro-bt-container .no-bt {
+    margin-top: 30px; }
+
+/*# sourceMappingURL=SceneIntro.css.map */

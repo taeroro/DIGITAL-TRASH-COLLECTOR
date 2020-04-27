@@ -103,14 +103,14 @@ function DrawingCanvas() {
   }, [])
 
   return (
-    <div className="scene-1">
+    <div className="scene-drwaing">
       <canvas ref={canvas} />
 
-      <div className="dialog-1-container">
+      <div className="dialog-drwaing-container">
         <h1>← Paint your digital organism</h1>
         <p>Tip: draw slower</p>
 
-        <div className="dialog-1-bt">
+        <div className="dialog-drwaing-bt">
           <span>I'm Finished</span>
         </div>
       </div>

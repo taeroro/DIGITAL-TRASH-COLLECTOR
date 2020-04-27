@@ -1,9 +1,9 @@
-.scene-1 {
+.scene-drwaing {
   width: 100vw;
   background-color: rgb(5, 5, 5);
 }
 
-.dialog-1-container {
+.dialog-drwaing-container {
   position: absolute;
   top: 0;
   width: calc(100% - 100vh - 10vw);
@@ -22,7 +22,7 @@
     color: rgba(255, 255, 255, 0.3);
   }
 
-  .dialog-1-bt {
+  .dialog-drwaing-bt {
     display: inline-block;
     position: absolute;
     padding: 15px 30px;
@@ -37,7 +37,7 @@
     }
   }
 
-  .dialog-1-bt:hover {
+  .dialog-drwaing-bt:hover {
 
   }
 }
