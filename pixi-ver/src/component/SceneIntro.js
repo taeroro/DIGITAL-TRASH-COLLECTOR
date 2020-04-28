@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import Typewriter from 'typewriter-effect';
 import './SceneIntro.css';
 
 function SceneIntro({ sceneManager }) {
@@ -25,9 +26,20 @@ function SceneIntro({ sceneManager }) {
 
   return (
     <div className="scene-intro">
-      <h1>
+      <Typewriter
+        options={{
+          delay: 20
+        }}
+        onInit={(typewriter) => {
+        typewriter
+          .typeString('- Do you want to bring the files in your computer trash can to life?')
+          .start();
+        }}
+      />
+
+      {/* <h1>
         - Do you want to bring the files in your computer trash can to life?
-      </h1>
+      </h1> */}
 
       <div className="dialog-intro-bt-container">
         <div className="yes-bt" onClick={() => handleScene("yes")}>
